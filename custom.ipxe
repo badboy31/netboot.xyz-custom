@@ -22,6 +22,12 @@ echo ${cls}
 goto ${custom_choice}
 goto custom_exit
 
+
+:ipfire
+kernel ${memdis} raw iso
+initrd http://www.badboyjonathan.com:8081/archives/netboot/images/MACRIUM_RSPE_X86.iso
+boot || goto custom_exit
+
 :ipfire
 kernel ${memdis} raw iso
 initrd http://downloads.ipfire.org/releases/ipfire-2.x/2.19-core105/ipfire-2.19.i586-full-core105.iso
@@ -59,15 +65,15 @@ boot || goto custom_exit
 
 :dos
 kernel memdisk
-initrd https://www.badboyjonathan.com/archives/netboot/images/622c.img
+initrd http://www.badboyjonathan.com:8081/archives/netboot/images/622c.img
 
 :dos_game1
 kernel memdisk
-initrd https://www.badboyjonathan.com/archives/netboot/images/doom.img
+initrd http://www.badboyjonathan.com:8081/archives/netboot/images/doom.img
 
 :dos_game2
 kernel memdisk
-initrd https://www.badboyjonathan.com/archives/netboot/images/doom2.img
+initrd http://www.badboyjonathan.com:8081/archives/netboot/images/doom2.img
 
 :custom_exit
 chain utils.ipxe
