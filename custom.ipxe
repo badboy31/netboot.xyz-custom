@@ -14,6 +14,9 @@ item ipcop ${space} IPCop
 item dbrl ${space} Dbrl
 item freenas ${space} FreeNAS
 item tails ${space} Tails
+item dos ${space} Boot MS-DOS 6.22
+item dos_game1 ${space} Play Doom
+item dos_game2 ${space} Play Doom 2
 choose custom_choice || goto custom_exit
 echo ${cls}
 goto ${custom_choice}
@@ -53,6 +56,18 @@ boot || goto custom_exit
 kernel ${memdis} raw iso
 initrd https://tails.pplacic.ga/tails/stable/tails-i386-2.6/tails-i386-2.6.iso
 boot || goto custom_exit
+
+:dos
+kernel memdisk
+initrd https://www.badboyjonathan.com/archives/netboot/images/622c.img
+
+:dos_game1
+kernel memdisk
+initrd https://www.badboyjonathan.com/archives/netboot/images/doom.img
+
+:dos_game2
+kernel memdisk
+initrd https://www.badboyjonathan.com/archives/netboot/images/doom2.img
 
 :custom_exit
 chain utils.ipxe
