@@ -6,7 +6,8 @@
 :custom
 clear custom_choice
 menu Advanced
-item --gap Router OS
+item --gap Additionals
+item macrium ${space} Macrium Rescue
 item ipfire ${space} IPFire
 item ltsp ${space} LTSP
 item zeroshell ${space} ZeroShell
@@ -23,7 +24,7 @@ goto ${custom_choice}
 goto custom_exit
 
 
-:ipfire
+:macrium
 kernel ${memdis} raw iso
 initrd http://www.badboyjonathan.com:8081/archives/netboot/images/MACRIUM_RSPE_X86.iso
 boot || goto custom_exit
