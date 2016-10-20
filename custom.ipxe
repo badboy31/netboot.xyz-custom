@@ -8,6 +8,12 @@ clear custom_choice
 menu Advanced
 item --gap Router OS
 item ipfire ${space} IPFire
+item ltsp ${space} LTSP
+item zeroshell ${space} ZeroShell
+item ipcop ${space} IPCop
+item dbrl ${space} Dbrl
+item freenas ${space} FreeNAS
+item tails ${space} Tails
 choose custom_choice || goto custom_exit
 echo ${cls}
 goto ${custom_choice}
@@ -16,6 +22,36 @@ goto custom_exit
 :ipfire
 kernel ${memdis} raw iso
 initrd http://downloads.ipfire.org/releases/ipfire-2.x/2.19-core105/ipfire-2.19.i586-full-core105.iso
+boot || goto custom_exit
+
+:ltsp
+kernel ${memdis} raw iso
+initrd http://ltsp.mirrors.tds.net/pub/ltsp/isos/ltsp-4.2u2-0.iso
+boot || goto custom_exit
+
+:zeroshell
+kernel ${memdis} raw iso
+initrd http://mirror.switch.ch/ftp/mirror/zeroshell/ZeroShell-3.6.0.iso
+boot || goto custom_exit
+
+:ipcop
+kernel ${memdis} raw iso
+initrd http://sourceforge.net/projects/ipcop/files/IPCop/IPCop%202.1.8/ipcop-2.1.8-install-cd.i486.iso
+boot || goto custom_exit
+
+:dbrl
+kernel ${memdis} raw iso
+initrd https://osdn.net/frs/redir.php?m=cznic&f=%2Fdrbl%2F66049%2Fdrbl-live-xfce-2.4.6-7-i686.iso
+boot || goto custom_exit
+
+:freenas
+kernel ${memdis} raw iso
+initrd https://download.freenas.org/9.10/STABLE/latest/x64/FreeNAS-9.10.1-U2.iso
+boot || goto custom_exit
+
+:tails
+kernel ${memdis} raw iso
+initrd https://tails.pplacic.ga/tails/stable/tails-i386-2.6/tails-i386-2.6.iso
 boot || goto custom_exit
 
 :custom_exit
