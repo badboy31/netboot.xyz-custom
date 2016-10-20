@@ -3,10 +3,21 @@
 ### netboot.xyz-custom menu
 ###
 
-:start
-echo Hello world!
-sleep 10
+:custom
+clear custom_choice
+menu Advanced
+item --gap Router OS
+item ipfire ${space} IPFire
+choose custom_choice || goto custom_exit
+echo ${cls}
+goto ${custom_choice}
 goto custom_exit
 
+:ipfire
+kernel ${memdis} raw iso
+initrd http://downloads.ipfire.org/releases/ipfire-2.x/2.19-core105/ipfire-2.19.i586-full-core105.iso
+boot || goto custom_exit
+
 :custom_exit
+chain utils.ipxe
 exit 0
